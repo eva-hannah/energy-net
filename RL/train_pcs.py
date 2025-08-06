@@ -10,7 +10,7 @@ import os
 import argparse
 import numpy as np
 import logging
-from stable_baselines3 import PPO, TD3
+from stable_baselines3 import PPO, TD3, SAC 
 from sb3_contrib import RecurrentPPO
 from stable_baselines3.common.evaluation import evaluate_policy
 
@@ -51,7 +51,7 @@ def parse_args():
     parser.add_argument("--iso-action-file", type=str, default=None,
                         help="Path to numpy file (.npy) containing ISO action sequence for PCS training")
     # Algorithm parameters
-    parser.add_argument("--algorithm", type=str, choices=["ppo", "recurrent_ppo", "td3"],
+    parser.add_argument("--algorithm", type=str, choices=["ppo", "recurrent_ppo", "td3", "sac"], 
                         default="ppo", help="RL algorithm for PCS agent")
     parser.add_argument("--lstm-size", type=int, default=64, 
                         help="LSTM hidden size (for RecurrentPPO)")
@@ -142,6 +142,8 @@ def main():
             model = RecurrentPPO.load(model_path, env=eval_env)
         elif args.algorithm == "td3":
             model = TD3.load(model_path, env=eval_env)
+        elif args.algorithm == "sac":  
+            model = SAC.load(model_path, env=eval_env)
         else:
             model = PPO.load(model_path, env=eval_env)
         # Evaluate
@@ -206,6 +208,21 @@ def main():
                 pcs_env, net_arch=args.net_arch, seed=args.seed,
                 learning_rate=args.learning_rate, buffer_size=args.buffer_size,
                 train_freq=args.train_freq, action_noise=noise
+            )
+        elif args.algorithm == "sac": 
+            model = SAC(
+                policy="MlpPolicy",
+                env=pcs_env,
+                learning_rate=args.learning_rate,
+                buffer_size=args.buffer_size,
+                batch_size=args.batch_size,
+                tau=0.005,
+                gamma=0.99,
+                train_freq=(1, "episode"),
+                target_update_interval=1,
+                ent_coef="auto",
+                seed=args.seed,
+                verbose=1,
             )
         else:
             model = create_ppo_model(
