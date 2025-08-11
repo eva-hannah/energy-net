@@ -1,0 +1,110 @@
+# tests/test_components.py
+
+import unittest
+from typing import Dict, Any
+import math
+
+from energy_net.components.storage_devices.battery import Battery
+from energy_net.components.production_devices.production_unit import ProductionUnit
+from energy_net.components.consumption_devices.consumption_unit import ConsumptionUnit
+from energy_net.dynamics.storage_dynamics.battery_dynamics_det import DeterministicBattery
+from energy_net.dynamics.production_dynamics.production_dynmaics_det import DeterministicProduction
+from energy_net.dynamics.consumption_dynamics.consumption_dynamics_det import DeterministicConsumption
+from energy_net.components.pcsunit import PCSUnit
+
+
+class TestBattery(unittest.TestCase):
+    def setUp(self):
+        # Define valid model parameters for BatteryDynamicsDet
+        battery_model_params: Dict[str, Any] = {
+            'charge_efficiency': 0.4,
+            'discharge_efficiency': 0.6,
+            'lifetime_constant': 100.0
+        }
+        self.battery_dynamics = DeterministicBattery(model_parameters=battery_model_params)
+
+        # Define configuration for Battery
+        self.battery_config: Dict[str, Any] = {
+            'min': 0.0,
+            'max': 60.0,
+            'charge_rate_max': 4.0,
+            'discharge_rate_max': 2.0,
+            'charge_efficiency': 0.4,
+            'discharge_efficiency': 0.6,
+            'init': 30.0
+        }
+
+        # Initialize Battery component
+        self.battery = Battery(dynamics=self.battery_dynamics, config=self.battery_config)
+
+    def test_initialization_with_valid_parameters(self):
+        # Test that Battery initializes correctly with valid parameters
+        self.assertEqual(self.battery.energy_level, 30.0)
+        self.assertEqual(self.battery.energy_min, 0.0)
+        self.assertEqual(self.battery.energy_max, 60.0)
+        self.assertEqual(self.battery.charge_rate_max, 4.0)
+        self.assertEqual(self.battery.discharge_rate_max, 2.0)
+        self.assertEqual(self.battery.charge_efficiency, 0.4)
+        self.assertEqual(self.battery.discharge_efficiency, 0.6)
+
+    def test_initialization_missing_parameters(self):
+        # Test that Battery raises AssertionError if configuration parameters are missing
+        incomplete_config: Dict[str, Any] = {
+            'min': 0.0,
+            'max': 60.0,
+            'charge_rate_max': 4.0,
+            # 'discharge_rate_max' is missing
+            'charge_efficiency': 0.4,
+            'discharge_efficiency': 0.6,
+            'init': 30.0
+        }
+        with self.assertRaises(AssertionError):
+            Battery(dynamics=self.battery_dynamics, config=incomplete_config)
+
+    def test_perform_action_charge_within_limits(self):
+        # Test charging within charge_rate_max and energy_max
+        self.battery.update(time=0.5, action=2.0)  # Charge 2.0 MW
+        expected_energy = 30.0 + 2.0 * 0.4  # 30 + 0.8 = 30.8
+        self.assertAlmostEqual(self.battery.get_state(), expected_energy, places=5)
+
+    def test_perform_action_discharge_within_limits(self):
+        # Test discharging within discharge_rate_max and energy_min
+        self.battery.update(time=0.5, action=-1.5)  # Discharge 1.5 MW
+        expected_energy = 30.0 - 1.5 * 0.6  # 30 - 0.9 = 29.1
+        self.assertAlmostEqual(self.battery.get_state(), expected_energy, places=5)
+
+    def test_charge_exceeds_max_energy(self):
+        # Test charging that would exceed max_energy
+        self.battery_config['init'] = 59.0
+        self.battery.energy_level = 59.0
+        self.battery.update(time=0.5, action=4.0)  # Attempt to charge 4.0 MW
+        # Charge power limited to 4.0 MW, energy_change = 4.0 * 0.4 = 1.6
+        # New energy = min(59.0 + 1.6, 60.0) = 60.0
+        expected_energy = 60.0
+        self.assertAlmostEqual(self.battery.get_state(), expected_energy, places=5)
+
+    def test_discharge_exceeds_min_energy(self):
+        # Test discharging that would exceed min_energy
+        self.battery_config['init'] = 0.5
+        self.battery.energy_level = 0.5
+        self.battery.update(time=0.5, action=-2.0)  # Attempt to discharge 2.0 MW
+        # Discharge power limited to 2.0 MW, energy_change = 2.0 * 0.6 = 1.2
+        # New energy = max(0.5 - 1.2, 0.0) = 0.0
+        expected_energy = 0.0
+        self.assertAlmostEqual(self.battery.get_state(), expected_energy, places=5)
+
+    def test_no_action(self):
+        # Test that energy level remains unchanged when no action is taken
+        initial_energy = self.battery.get_state()
+        self.battery.update(time=0.5, action=0.0)  # No action
+        self.assertAlmostEqual(self.battery.get_state(), initial_energy, places=5)
+
+    def test_reset(self):
+        # Test that reset restores the energy level to initial value
+        self.battery.update(time=0.5, action=2.0)  # Charge 2.0 MW
+        self.battery.reset()
+        self.assertEqual(self.battery.get_state(), 30.0)
+
+
+if __name__ == '__main__':
+    unittest.main()
