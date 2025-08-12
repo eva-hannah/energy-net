@@ -157,3 +157,6 @@ build/
 dist/
 .venv/
 .env
+
+# Sphinx build artifacts
+_build/
