@@ -7,9 +7,24 @@ from energy_net.utils.logger import setup_logger
 
 
 class Battery(ElementaryGridEntity):
+    """Battery component managing energy storage.
+
+    Args:
+        dynamics (EnergyDynamics): Dynamics model that computes next energy level.
+        config (Dict[str, Any]): Battery configuration with keys:
+            - ``min`` (float): Minimum energy (MWh).
+            - ``max`` (float): Maximum energy (MWh).
+            - ``charge_rate_max`` (float): Max charge power (MW).
+            - ``discharge_rate_max`` (float): Max discharge power (MW).
+            - ``charge_efficiency`` (float): Charge efficiency (0–1).
+            - ``discharge_efficiency`` (float): Discharge efficiency (0–1).
+            - ``init`` (float): Initial energy level (MWh).
+        log_file (str, optional): Log file path. Defaults to ``logs/battery.log``.
+
+    Raises:
+        AssertionError: If a required configuration key is missing.
     """
-    Battery component managing energy storage.
-    """
+
 
     def __init__(self, dynamics: EnergyDynamics, config: Dict[str, Any], log_file: Optional[str] = 'logs/battery.log'):
         """
