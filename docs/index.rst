@@ -6,6 +6,35 @@
 Energy Net documentation
 ========================
 
+.. raw:: html
+
+   <style>
+   h1, h2, h3, h4, h5, h6 {
+       color: #2a4d69;
+       font-family: 'Segoe UI', 'Arial', sans-serif;
+   }
+   body {
+       font-family: 'Segoe UI', 'Arial', sans-serif;
+       color: #222;
+       background-color: #f8f9fa;
+   }
+   code, pre {
+       background-color: #f4f4f4;
+       color: #c7254e;
+       font-family: 'Fira Mono', 'Consolas', monospace;
+       border-radius: 4px;
+       padding: 2px 4px;
+   }
+   .highlight .n {
+       color: #1e88e5;
+   }
+   .highlight .k {
+       color: #43a047;
+   }
+   .highlight .s {
+       color: #e65100;
+   }
+   </style>
 
 Grid Entity
 ===========
@@ -15,9 +44,9 @@ It provides a consistent interface for both elementary and composite entities, e
 
 **Key Classes:**
 
-- **GridEntity**: Abstract base class for all grid entities. Handles logging and defines the reset interface.
-- **ElementaryGridEntity**: Represents basic entities such as batteries, production units, and consumption units. Requires implementation of `perform_action`, `get_state`, and `update`.
-- **CompositeGridEntity**: Manages a collection of sub-entities, allowing coordinated actions and state aggregation across multiple grid components.
+- **:class:`GridEntity`**: Abstract base class for all grid entities. Handles logging and defines the reset interface.
+- **:class:`ElementaryGridEntity`**: Represents basic entities such as batteries, production units, and consumption units. Requires implementation of ``perform_action``, ``get_state``, and ``update``.
+- **:class:`CompositeGridEntity`**: Manages a collection of sub-entities, allowing coordinated actions and state aggregation across multiple grid components.
 
 **Usage Example:**
 
