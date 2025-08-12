@@ -20,7 +20,7 @@ Energy Net documentation
    }
    code, pre {
        background-color: #f4f4f4;
-       color: #c7254e;
+       color: #2553c7ff;
        font-family: 'Fira Mono', 'Consolas', monospace;
        border-radius: 4px;
        padding: 2px 4px;
@@ -34,21 +34,42 @@ Energy Net documentation
    .highlight .s {
        color: #e65100;
    }
+   .rst-content dl dt {
+       background: #e3eafc;
+       color: #2a4d69;
+       border-left: 4px solid #2553c7ff;
+       padding: 4px 8px;
+       font-family: 'Segoe UI', 'Arial', sans-serif;
+   }
+   .rst-content dl dd {
+       background: #f8f9fa;
+       color: #222;
+       padding: 4px 8px;
+   }
+   strong, b {
+       color: #2553c7ff;
+   }
    </style>
 
 Grid Entity
 ===========
 
-The ``grid_entity`` module defines the core abstractions for all grid entities in the Energy Net simulation framework. 
+.. raw:: html
+
+   <div style="font-family: 'Segoe UI', 'Arial', sans-serif; color: #2a4d69; font-size: 1.1em;">
+
+The <strong style="color:#2553c7ff;">grid_entity</strong> module defines the core abstractions for all grid entities in the <span style="color:#43a047;"><b>Energy Net</b></span> simulation framework. 
 It provides a consistent interface for both elementary and composite entities, enabling modular and extensible modeling of smart grid components.
 
-**Key Classes:**
+<b>Key Classes:</b>
+<ul>
+  <li><b style="color:#2553c7ff;">GridEntity</b>: Abstract base class for all grid entities. Handles logging and defines the reset interface.</li>
+  <li><b style="color:#2553c7ff;">ElementaryGridEntity</b>: Represents basic entities such as batteries, production units, and consumption units. Requires implementation of <span style="color:#e65100;">perform_action</span>, <span style="color:#e65100;">get_state</span>, and <span style="color:#e65100;">update</span>.</li>
+  <li><b style="color:#2553c7ff;">CompositeGridEntity</b>: Manages a collection of sub-entities, allowing coordinated actions and state aggregation across multiple grid components.</li>
+</ul>
 
-- **:class:`GridEntity`**: Abstract base class for all grid entities. Handles logging and defines the reset interface.
-- **:class:`ElementaryGridEntity`**: Represents basic entities such as batteries, production units, and consumption units. Requires implementation of ``perform_action``, ``get_state``, and ``update``.
-- **:class:`CompositeGridEntity`**: Manages a collection of sub-entities, allowing coordinated actions and state aggregation across multiple grid components.
-
-**Usage Example:**
+<b>Usage Example:</b>
+</div>
 
 .. code-block:: python
 

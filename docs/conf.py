@@ -7,8 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Energy Net'
-copyright = '2025, Eva'
-author = 'Eva'
+copyright = '2025, CLAIR Technion'
+author = 'CLAIR'
 
 version = '0.1'
 release = '0.1'
