@@ -1,8 +1,8 @@
 # tests/test_energy_dynamics.py
 
 import unittest
-from energy_net.dynamics.production_dynamics.production_dynmaics_det import ProductionDynamicsDet
-from energy_net.dynamics.consumption_dynamics.consumption_dynamics_det import ConsumptionDynamicsDet
+from energy_net_old.dynamics.production_dynamics.production_dynmaics_det import ProductionDynamicsDet
+from energy_net_old.dynamics.consumption_dynamics.consumption_dynamics_det import ConsumptionDynamicsDet
 
 from typing import Any, Dict
 import math

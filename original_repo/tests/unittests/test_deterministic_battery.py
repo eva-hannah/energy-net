@@ -1,7 +1,7 @@
 # tests/test_deterministic_battery.py
 
 import unittest
-from energy_net.dynamics.storage_dynamics.battery_dynamics_det import BatteryDynamicsDet
+from components.battery_dynamics_det import BatteryDynamicsDet
 from typing import Dict, Any
 
 

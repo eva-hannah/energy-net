@@ -2,10 +2,10 @@
 
 import unittest
 import gymnasium as gym
-import energy_net
-from energy_net.market.pricing.pricing_policy import PricingPolicy
-from energy_net.market.pricing.cost_types import CostType
-from energy_net.dynamics.consumption_dynamics.demand_patterns import DemandPattern
+import energy_net_old
+from energy_net_old.market.pricing.pricing_policy import PricingPolicy
+from energy_net_old.market.pricing.cost_types import CostType
+from energy_net_old.dynamics.consumption_dynamics.demand_patterns import DemandPattern
 
 class TestEnvironmentRegistration(unittest.TestCase):
     def test_environment_registration(self):

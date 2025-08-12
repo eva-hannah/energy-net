@@ -20,11 +20,11 @@ import yaml
 import gymnasium as gym
 from stable_baselines3 import PPO, TD3
 from sb3_contrib import RecurrentPPO
-from energy_net.envs import EnergyNetV0  # for raw action_space bounds
+from energy_net_old.envs import EnergyNetV0  # for raw action_space bounds
 
 # Import our custom env builder
-import energy_net.envs.register_envs
-from energy_net.controllers.alternating_wrappers import make_iso_env
+import energy_net_old.envs.register_envs
+from energy_net_old.controllers.alternating_wrappers import make_iso_env
 
 
 def parse_args():
@@ -207,9 +207,9 @@ def main():
         return
 
     # Build environment config including dispatch flag
-    from energy_net.dynamics.consumption_dynamics.demand_patterns import DemandPattern
-    from energy_net.market.pricing.pricing_policy import PricingPolicy
-    from energy_net.market.pricing.cost_types import CostType
+    from energy_net_old.dynamics.consumption_dynamics.demand_patterns import DemandPattern
+    from energy_net_old.market.pricing.pricing_policy import PricingPolicy
+    from energy_net_old.market.pricing.cost_types import CostType
     
     if args.demand_pattern == "DATA_DRIVEN" and not args.demand_data:
         print("ERROR: DATA_DRIVEN demand pattern requires --demand-data")

@@ -4,12 +4,12 @@ import unittest
 from typing import Dict, Any
 import math
 
-from energy_net.components.electrolyzer import Electrolyzer
-from energy_net.components.production_devices.production_unit import ProductionUnit
-from energy_net.components.consumption_devices.consumption_unit import ConsumptionUnit
-from energy_net.dynamics.production_dynamics.production_dynmaics_det import ProductionDynamicsDet
-from energy_net.dynamics.consumption_dynamics.consumption_dynamics_det import ConsumptionDynamicsDet
-from energy_net.components.electrolyzer import Electrolyzer
+from energy_net_old.components.electrolyzer import Electrolyzer
+from energy_net_old.components.production_devices.production_unit import ProductionUnit
+from energy_net_old.components.consumption_devices.consumption_unit import ConsumptionUnit
+from energy_net_old.dynamics.production_dynamics.production_dynmaics_det import ProductionDynamicsDet
+from energy_net_old.dynamics.consumption_dynamics.consumption_dynamics_det import ConsumptionDynamicsDet
+from energy_net_old.components.electrolyzer import Electrolyzer
 
 
 

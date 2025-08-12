@@ -31,11 +31,11 @@ from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3.common.noise import NormalActionNoise, OrnsteinUhlenbeckActionNoise, ActionNoise
 
 # Import our custom env and wrappers
-import energy_net.envs.register_envs
+import energy_net_old.envs.register_envs
 from RL.train_and_eval.setup import get_model
-from energy_net.controllers.alternating_wrappers import make_iso_env
-from energy_net.envs import EnergyNetV0
-from energy_net.controllers.plot_callback import PlotCallback
+from energy_net_old.controllers.alternating_wrappers import make_iso_env
+from energy_net_old.envs import EnergyNetV0
+from energy_net_old.controllers.plot_callback import PlotCallback
 from pathlib import Path
 
 # Set up logging
@@ -565,11 +565,11 @@ def main_():
         
     # Convert string pattern to enum
     if args.demand_pattern == "DATA_DRIVEN":
-        from energy_net.dynamics.consumption_dynamics.demand_patterns import DemandPattern
+        from energy_net_old.dynamics.consumption_dynamics.demand_patterns import DemandPattern
         print(f"Using DATA_DRIVEN demand pattern with data from: {args.demand_data}")
         demand_pattern = DemandPattern.DATA_DRIVEN
     else:
-        from energy_net.dynamics.consumption_dynamics.demand_patterns import DemandPattern
+        from energy_net_old.dynamics.consumption_dynamics.demand_patterns import DemandPattern
         demand_pattern = DemandPattern[args.demand_pattern]
     
     # Determine which algorithm to use
@@ -623,7 +623,7 @@ def main_():
         # Load PCS normalization if provided
         if pcs_policy is not None and args.pcs_norm_path and os.path.exists(args.pcs_norm_path):
             print(f"Loading PCS normalization from: {args.pcs_norm_path}")
-            from energy_net.controllers.alternating_wrappers import make_pcs_env
+            from energy_net_old.controllers.alternating_wrappers import make_pcs_env
             pcs_env_norm = make_pcs_env(
                 steps_per_iteration=args.timesteps,
                 cost_type=args.cost_type,
@@ -1097,11 +1097,11 @@ def main():
 
     # Convert string pattern to enum
     if args.demand_pattern == "DATA_DRIVEN":
-        from energy_net.dynamics.consumption_dynamics.demand_patterns import DemandPattern
+        from energy_net_old.dynamics.consumption_dynamics.demand_patterns import DemandPattern
         print(f"Using DATA_DRIVEN demand pattern with data from: {args.demand_data}")
         demand_pattern = DemandPattern.DATA_DRIVEN
     else:
-        from energy_net.dynamics.consumption_dynamics.demand_patterns import DemandPattern
+        from energy_net_old.dynamics.consumption_dynamics.demand_patterns import DemandPattern
         demand_pattern = DemandPattern[args.demand_pattern]
 
     # Determine which algorithm to use
@@ -1161,7 +1161,7 @@ def main():
         # Load PCS normalization if provided
         if pcs_policy is not None and args.pcs_norm_path and os.path.exists(args.pcs_norm_path):
             print(f"Loading PCS normalization from: {args.pcs_norm_path}")
-            from energy_net.controllers.alternating_wrappers import make_pcs_env
+            from energy_net_old.controllers.alternating_wrappers import make_pcs_env
             pcs_env_norm = make_pcs_env(
                 steps_per_iteration=args.timesteps,
                 cost_type=args.cost_type,
@@ -1307,7 +1307,7 @@ def main():
     # If a PCS normalization file was provided, wrap PCS model's env
     if pcs_model is not None and args.pcs_norm_path and os.path.exists(args.pcs_norm_path):
         print(f"Loading PCS normalization from: {args.pcs_norm_path}")
-        from energy_net.controllers.alternating_wrappers import make_pcs_env
+        from energy_net_old.controllers.alternating_wrappers import make_pcs_env
         # Create a dummy PCS env with normalization loaded
         pcs_env_norm = make_pcs_env(
             steps_per_iteration=args.timesteps,

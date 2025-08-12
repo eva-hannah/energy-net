@@ -6,15 +6,15 @@ import math
 
 import numpy as np
 
-from energy_net.components.storage_devices.battery import Battery
-from energy_net.components.production_devices.production_unit import ProductionUnit
-from energy_net.components.consumption_devices.consumption_unit import ConsumptionUnit
-from energy_net.defs import Bounds
-from energy_net.dynamics.storage_dynamics.battery_dynamics_det import BatteryDynamicsDet
-from energy_net.dynamics.production_dynamics.production_dynmaics_det import ProductionDynamicsDet
-from energy_net.dynamics.consumption_dynamics.consumption_dynamics_det import ConsumptionDynamicsDet
-from energy_net.components.pcsunit import PCSUnit
-from energy_net.envs.env_utils import bounds_to_gym, gym_to_bounds
+from components.battery import Battery
+from energy_net_old.components.production_devices.production_unit import ProductionUnit
+from energy_net_old.components.consumption_devices.consumption_unit import ConsumptionUnit
+from energy_net_old.defs import Bounds
+from components.battery_dynamics_det import BatteryDynamicsDet
+from energy_net_old.dynamics.production_dynamics.production_dynmaics_det import ProductionDynamicsDet
+from energy_net_old.dynamics.consumption_dynamics.consumption_dynamics_det import ConsumptionDynamicsDet
+from energy_net_old.components.pcsunit import PCSUnit
+from energy_net_old.envs.env_utils import bounds_to_gym, gym_to_bounds
 
 
 class TestConversion(unittest.TestCase):

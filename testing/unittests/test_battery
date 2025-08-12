@@ -1,16 +1,10 @@
-# tests/test_components.py
+
 
 import unittest
 from typing import Dict, Any
-import math
 
-from energy_net.components.storage_devices.battery import Battery
-from energy_net.components.production_devices.production_unit import ProductionUnit
-from energy_net.components.consumption_devices.consumption_unit import ConsumptionUnit
-from energy_net.dynamics.storage_dynamics.battery_dynamics_det import DeterministicBattery
-from energy_net.dynamics.production_dynamics.production_dynmaics_det import DeterministicProduction
-from energy_net.dynamics.consumption_dynamics.consumption_dynamics_det import DeterministicConsumption
-from energy_net.components.pcsunit import PCSUnit
+from components.battery import Battery
+from components.battery_dynamics_det import DeterministicBattery
 
 
 class TestBattery(unittest.TestCase):
@@ -53,7 +47,7 @@ class TestBattery(unittest.TestCase):
             'min': 0.0,
             'max': 60.0,
             'charge_rate_max': 4.0,
-            # 'discharge_rate_max' is missing
+            'discharge_rate_max': 2.0,
             'charge_efficiency': 0.4,
             'discharge_efficiency': 0.6,
             'init': 30.0

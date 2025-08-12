@@ -18,8 +18,8 @@ from stable_baselines3.common.evaluation import evaluate_policy
 from RL.train_iso import create_ppo_model, create_recurrent_model, create_td3_model, LinearDecayActionNoise
 
 # Import env factory and plotting callback
-from energy_net.controllers.alternating_wrappers import make_pcs_env
-from energy_net.controllers.plot_callback import PlotCallback
+from energy_net_old.controllers.alternating_wrappers import make_pcs_env
+from energy_net_old.controllers.plot_callback import PlotCallback
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, 
@@ -95,9 +95,9 @@ def main():
     args = parse_args()
     
     # Convert string enums to actual enums
-    from energy_net.dynamics.consumption_dynamics.demand_patterns import DemandPattern
-    from energy_net.market.pricing.pricing_policy import PricingPolicy
-    from energy_net.market.pricing.cost_types import CostType
+    from energy_net_old.dynamics.consumption_dynamics.demand_patterns import DemandPattern
+    from energy_net_old.market.pricing.pricing_policy import PricingPolicy
+    from energy_net_old.market.pricing.cost_types import CostType
 
     if args.demand_pattern == "DATA_DRIVEN" and not args.demand_data:
         print("ERROR: DATA_DRIVEN demand pattern requires --demand-data")

@@ -2,14 +2,14 @@
 
 import unittest
 import numpy as np
-from energy_net.controllers.iso.pricing_strategy import (
+from energy_net_old.controllers.iso.pricing_strategy import (
     PricingStrategyFactory,
     PricingStrategy,
     QuadraticPricingStrategy,
     ConstantPricingStrategy,
     OnlinePricingStrategy
 )
-from energy_net.market.pricing.pricing_policy import PricingPolicy
+from energy_net_old.market.pricing.pricing_policy import PricingPolicy
 
 
 class TestPricingStrategies(unittest.TestCase):

@@ -8,10 +8,10 @@ import logging
 import os
 
 from energy_net.env import EnergyNetV0
-from energy_net.dynamics.consumption_dynamics.demand_patterns import DemandPattern
-from energy_net.market.pricing.pricing_policy import PricingPolicy
-from energy_net.market.pricing.cost_types import CostType
-from energy_net.controllers.plot_callback import PlotCallback
+from energy_net_old.dynamics.consumption_dynamics.demand_patterns import DemandPattern
+from energy_net_old.market.pricing.pricing_policy import PricingPolicy
+from energy_net_old.market.pricing.cost_types import CostType
+from energy_net_old.controllers.plot_callback import PlotCallback
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

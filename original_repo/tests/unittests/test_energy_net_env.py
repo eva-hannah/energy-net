@@ -9,10 +9,10 @@ import gymnasium as gym
 from gymnasium import spaces
 
 
-from energy_net.envs.energy_net_v0 import EnergyNetV0
-from energy_net.dynamics.consumption_dynamics.demand_patterns import DemandPattern
-from energy_net.market.pricing.cost_types import CostType
-from energy_net.market.pricing.pricing_policy import PricingPolicy
+from energy_net_old.envs.energy_net_v0 import EnergyNetV0
+from energy_net_old.dynamics.consumption_dynamics.demand_patterns import DemandPattern
+from energy_net_old.market.pricing.cost_types import CostType
+from energy_net_old.market.pricing.pricing_policy import PricingPolicy
 from unittest.mock import MagicMock
 
 NUM_SEEDS = 5

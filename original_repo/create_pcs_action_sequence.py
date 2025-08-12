@@ -23,9 +23,9 @@ from sb3_contrib import RecurrentPPO
 import yaml
 
 # Import our custom env and wrappers
-import energy_net.envs.register_envs
-from energy_net.controllers.alternating_wrappers import make_pcs_env
-from energy_net.envs import EnergyNetV0
+import energy_net_old.envs.register_envs
+from energy_net_old.controllers.alternating_wrappers import make_pcs_env
+from energy_net_old.envs import EnergyNetV0
 
 def parse_args():
     """Parse command line arguments"""
@@ -224,14 +224,14 @@ def main():
     if args.method == "from_policy":
         # Convert string pattern to enum
         if args.demand_pattern == "DATA_DRIVEN":
-            from energy_net.dynamics.consumption_dynamics.demand_patterns import DemandPattern
+            from energy_net_old.dynamics.consumption_dynamics.demand_patterns import DemandPattern
             if not args.demand_data:
                 print("ERROR: DATA_DRIVEN demand pattern requires a demand data file.")
                 print("Please specify the file path using --demand-data")
                 return
             demand_pattern = DemandPattern.DATA_DRIVEN
         else:
-            from energy_net.dynamics.consumption_dynamics.demand_patterns import DemandPattern
+            from energy_net_old.dynamics.consumption_dynamics.demand_patterns import DemandPattern
             demand_pattern = DemandPattern[args.demand_pattern]
         
         env_config = {

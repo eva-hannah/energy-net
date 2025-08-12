@@ -152,4 +152,8 @@ checklink/cookies.txt
 
 #test logs
 *.out.*
-logs/*
+logs/*node_modules/
+build/
+dist/
+.venv/
+.env
