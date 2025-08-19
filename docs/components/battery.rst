@@ -1,5 +1,5 @@
-Battery 
-===========
+Battery
+=======
 
 .. automodule:: components.battery
    :noindex:
@@ -10,6 +10,8 @@ Battery
    :inherited-members:
    :show-inheritance:
    :member-order: bysource
+
+.. _battery-attributes:
 
 Attributes
 ----------
@@ -25,6 +27,8 @@ Attributes
 - ``initial_energy`` (float): Initial energy level (MWh).
 - ``energy_level`` (float): Current energy level (MWh).
 - ``energy_change`` (float): Delta since last action (MWh).
+
+.. _battery-usage:
 
 Usage
 -----
@@ -49,7 +53,9 @@ Minimal example::
     bat.update(time=0.25, action=10.0)  # charge at 10 MW
     level = bat.get_state()             # current MWh
 
-    Battery Dynamics
+.. _battery-dynamics:
+
+Battery Dynamics
 ----------------
 
 The **DeterministicBattery** class models predictable charging and discharging 
@@ -119,4 +125,3 @@ Example Usage
         lifetime_constant=1000,
         current_time_step=10
     )
-

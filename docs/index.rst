@@ -2,7 +2,6 @@
    sphinx-quickstart on Tue Aug 12 18:33:39 2025.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
-
 Welcome to Energy Net's documentation!
 ======================================
 
@@ -11,6 +10,12 @@ Welcome to Energy Net's documentation!
    :caption: Contents
 
    components/battery
+
+**Quick links:**
+- :ref:`Attributes <battery-attributes>`
+- :ref:`Usage <battery-usage>`
+- :ref:`Battery Dynamics <battery-dynamics>`
+
 
 
 
