@@ -11,10 +11,7 @@ Welcome to Energy Net's documentation!
 
    components/battery
 
-**Quick links:**
-- :ref:`Attributes <battery-attributes>`
-- :ref:`Usage <battery-usage>`
-- :ref:`Battery Dynamics <battery-dynamics>`
+
 
 
 

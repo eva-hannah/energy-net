@@ -60,14 +60,6 @@ Battery Dynamics
 
 The **DeterministicBattery** class models predictable charging and discharging 
 behavior of a battery, applying fixed efficiencies and handling natural decay.
-
-.. autoclass:: dynamics.battery_dynamics_det.DeterministicBattery
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Overview
-~~~~~~~~
 This class is a subclass of ``ModelBasedDynamics`` and provides deterministic
 energy state updates for a battery in the smart grid simulation.
 
