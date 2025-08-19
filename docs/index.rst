@@ -10,4 +10,8 @@ Welcome to Energy Net's documentation!
    :maxdepth: 2
    :caption: Contents
 
-   api/battery
+   components/battery
+
+
+
+
