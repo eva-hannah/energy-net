@@ -48,10 +48,4 @@ Supported market mechanisms include:
 * Real-time market
 * Ancillary services
 
-API Reference
-------------
-.. autoclass:: energynet.environments.ISO
-    :members:
-    :undoc-members:
-    :show-inheritance:
 

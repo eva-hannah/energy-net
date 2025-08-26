@@ -59,7 +59,4 @@ Built-in support for:
 * Performance monitoring
 * Automated log directory creation
 
-API Reference
-------------
-.. autofunction:: energy_net.envs.pcs_env.make_pcs_env_zoo
 
