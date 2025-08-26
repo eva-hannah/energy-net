@@ -55,8 +55,3 @@ API Reference
     :undoc-members:
     :show-inheritance:
 
-See Also
---------
-* :doc:`generator`
-* :doc:`load`
-* :doc:`transmission`

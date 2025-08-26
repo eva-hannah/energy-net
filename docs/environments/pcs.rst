@@ -63,7 +63,3 @@ API Reference
 ------------
 .. autofunction:: energy_net.envs.pcs_env.make_pcs_env_zoo
 
-See Also
---------
-* :doc:`iso`
-* :doc:`energynet`

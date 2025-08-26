@@ -62,7 +62,4 @@ API Reference
     :undoc-members:
     :show-inheritance:
 
-See Also
---------
-* `Gymnasium Environment Registration <https://gymnasium.farama.org/tutorials/gymnasium_basics/environment_creation/>`_
-* :doc:`environments/index`
+
